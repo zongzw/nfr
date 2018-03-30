@@ -1,0 +1,6 @@
+http://bbs.icpcw.com/thread-2386186-1-1.html  -- memory's I/O speed
+http://blog.csdn.net/bzhxuexi/article/details/46549735   -- sharing memory >> pipe and messageQ
+bpf: inner kernel packet filtering.
+redis: close persistance of data to disk.
+http://stackoverflow.com/questions/2866864/extract-payload-from-tcpflow-output
+

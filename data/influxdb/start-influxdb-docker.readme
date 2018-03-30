@@ -1,0 +1,2 @@
+docker run -itd -v /root/nfr/data/influxdb/etc/influxdb:/etc/influxdb -v /root/nfr/data/influxdb/var/lib/influxdb:/var/lib/influxdb -v /usr/share/collectd:/usr/share/collectd -e PRE_CREATE_DB="nfr;sys" -p 9093:8083 -p 9096:8086 -p 25826:25826/udp -p 192.168.56.102:8086:8086 --entrypoint /etc/influxdb/run.sh influxdb:latest
+Note: '-p xx.xx.xxx.xxx:8086:8086' is only for use of influxdb adminUI

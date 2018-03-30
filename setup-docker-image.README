@@ -1,0 +1,71 @@
+apt-get update
+apt-get install ssh
+apt-get install g++
+apt-get install vim
+apt-get install libncurses5-dev
+apt-get install bc
+apt-get install linux-headers-`uname -r`
+apt-get install tcpflow
+apt-get install libevent-dev
+apt-get install subversion
+apt-get install tree
+
+mkdir /root/downloads
+mkdir /root/nfr
+mkdir /root/nfr/dep
+# download following files and extract them as following.
+# |-- dep
+# |   |-- PF_RING-6.4.1
+# |   |-- hiredis
+# |   `-- redis-3.2.3
+(
+cd /root/downloads
+wget https://sourceforge.net/projects/ntop/files/PF_RING/PF_RING-6.4.1.tar.gz
+wget https://github.com/redis/hiredis/archive/v0.13.3.tar.gz
+wget http://download.redis.io/releases/redis-3.2.3.tar.gz
+wget http://packages.ntop.org/debian/jessie/all/PF_RING-dkms/pfring-dkms_6.5.0_all.deb
+wget http://packages.ntop.org/debian/jessie/x64/PF_RING/pfring_6.5.0-943_amd64.deb
+tar zxf PF_RING-6.4.1.tar.gz -C /root/nfr/dep
+tar zxf v0.13.3.tar.gz -C /root/nfr/dep
+( cd /root/nfr/dep; ln -s hiredis-0.13.3 hiredis)
+( cd /root/nfr/dep/hiredis && make && make install )
+tar zxf redis-3.2.3.tar.gz -C /root/nfr/dep
+dpkg -i pfring-dkms_6.5.0_all.deb
+dpkg -i pfring_6.5.0-943_amd64.deb
+)
+svn co https://xxx.xx.xxx.xxx/svn/FileRecovery/1.3-Code/Pkt2Redis2Pcap /root/nfr
+
+cat < EOF
+The output of svn command: 
+Error validating server certificate for 'https://xxx.xx.xxx.xxx:443':
+ - The certificate is not issued by a trusted authority. Use the
+ - ....
+ - Fingerprint: 29:50:84:4F:BD:B3:20:2A:FB:AE:DE:27:4E:2F:87:BA:22:56:A8:F2
+(R)eject, accept (t)emporarily or accept (p)ermanently? p
+Authentication realm: <https://xxx.xx.xxx.xxx:443> VisualSVN Server
+Password for 'root': ****
+
+Authentication realm: <https://xxx.xx.xxx.xxx:443> VisualSVN Server
+Username: zongzhaowei
+Password for 'zongzhaowei': ************
+
+
+-----------------------------------------------------------------------
+ATTENTION!  Your password for authentication realm:
+...
+of the 'store-plaintext-passwords' option to either 'yes' or 'no' in
+'/root/.subversion/servers'.
+-----------------------------------------------------------------------
+Store password unencrypted (yes/no)? yes
+A ....
+
+EOF
+
+(
+cd /root/nfr/scripts
+./make.sh 
+./make.sh install 
+)
+
+mkdir -p /var/log/nfr
+

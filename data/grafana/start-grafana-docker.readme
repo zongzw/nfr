@@ -1,0 +1,1 @@
+docker run -d -p 9000:3000 -v /root/nfr/data/grafana/var/lib/grafana:/var/lib/grafana -v /root/nfr/data/grafana/etc/grafana:/etc/grafana grafana/grafana:latest /run.sh

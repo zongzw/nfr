@@ -1,0 +1,4 @@
+                N2R                      |     Redis  |  R2S
+thrid   bind2core | Recv(nPkts/nBytes)            | Drop |  QueueSize | bind2core
+                    ss       s                              
+

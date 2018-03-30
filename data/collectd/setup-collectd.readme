@@ -1,0 +1,4 @@
+apt-get update
+apt-get install collectd
+cp collectd.conf /etc/collectd
+service collectd restart

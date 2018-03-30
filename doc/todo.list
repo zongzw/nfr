@@ -1,0 +1,15 @@
+priority: 3 done -> 6 done -> 1 done -> 4 done -> 5 done -> 2
+
+1. implement stats_all function
+2. bpf filter 
+3. automation
+4. migrate to test box.
+5. investigate tcpxtract/httpflow/Forensic Tools for Unix
+6. verify functionality is ready.
+
+
+
+foremost -i tcpflow.out
+1. tcpflow -i eth1
+2. wget http://www.tempier-nature.com/wp-content/uploads/2012/01/Pic-vert-male.jpg
+3. foremost -i tcpflow.out
